@@ -17,13 +17,13 @@ public class ShoppingCartHelper {
    catalog = new Vector<Product>();
    catalog.add(new Product("Dead or Alive", res
      .getDrawable(R.drawable.deadoralive),
-     "Dead or Alive by Tom Clancy with Grant Blackwood", 29.99));
+     "Dead or Alive by Tom Clancy with Grant Blackwood", "29.99 VND"));
    catalog.add(new Product("Switch", res
      .getDrawable(R.drawable.deadoralive),
-     "Switch by Chip Heath and Dan Heath", 24.99));
+     "Switch by Chip Heath and Dan Heath", "24.99 VND"));
    catalog.add(new Product("Watchmen", res
      .getDrawable(R.drawable.deadoralive),
-     "Watchmen by Alan Moore and Dave Gibbons", 14.99));
+     "Watchmen by Alan Moore and Dave Gibbons", "14.99 VND"));
   }
    
   return catalog;

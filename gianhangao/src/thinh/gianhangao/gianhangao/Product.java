@@ -7,11 +7,11 @@ public class Product {
  public String title;
  public Drawable productImage;
  public String description;
- public double price;
+ public String price;
  public boolean selected;
  
  public Product(String title, Drawable productImage, String description,
-   double price) {
+   String price) {
   this.title = title;
   this.productImage = productImage;
   this.description = description;

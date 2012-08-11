@@ -52,7 +52,8 @@ public class ProductAdapter extends BaseAdapter {
    item.productTitle = (TextView) convertView.findViewById(R.id.TextViewItem);
     
    item.productCheckbox = (CheckBox) convertView.findViewById(R.id.CheckBoxSelected);
-    
+   
+   item.productprice = (TextView) convertView.findViewById(R.id.textViewPrice);
    convertView.setTag(item);
   } else {
    item = (ViewItem) convertView.getTag();
@@ -62,7 +63,7 @@ public class ProductAdapter extends BaseAdapter {
    
   item.productImageView.setImageDrawable(curProduct.productImage);
   item.productTitle.setText(curProduct.title);
-   
+  item.productprice.setText(curProduct.price);
   if(!mShowCheckbox) {
    item.productCheckbox.setVisibility(View.GONE);
   } else {
@@ -81,6 +82,7 @@ public class ProductAdapter extends BaseAdapter {
   ImageView productImageView;
   TextView productTitle;
   CheckBox productCheckbox;
+  TextView productprice;
  }
  
 }
