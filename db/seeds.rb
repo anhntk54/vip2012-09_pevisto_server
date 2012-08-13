@@ -6,16 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-puts "Create user admin"
+#puts "Create user admin"
 User.destroy_all
 u = User.create(user: 'admin', mail: 'admin@sample.com',
 	password: 'password', password_confirmation: 'password', phone: '21341515')
 u.admin = true
 u.save
 
-puts "Create products"
+#puts "Create products"
 
 Product.destroy_all
 100.times do |i|
-	Product.create(product: "iPhone #{i}", describe: "worst phone ever")
+	Product.create(product: "iPhone #{i}", describe: "worst phone ever",image: File.open(File.join(Rails.root, 'chutieu.jpg')))
 end

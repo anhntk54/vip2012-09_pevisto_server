@@ -10,6 +10,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'annotate', '2.5.0', group: :development
 
 gem 'carrierwave'
+gem "rmagick"
 
 group :development, :test do
 	gem 'sqlite3'

@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Id com:</b>
+   <%= image_tag @product.image_url(:thumb) if @product.image? %>
+      <div class="name"><%= @product.product %></div>
+</p>
+
+<p>
+  <b>Id</b>
   <%= @product.user_id %>
 </p>
 
