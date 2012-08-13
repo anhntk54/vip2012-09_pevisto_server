@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to @user
+      sign_in @user
        respond_to do |format|
-          format.html # index.html.erb
+          format.html {redirect_to @user}
           format.json { render json: @user }
         end
     else
