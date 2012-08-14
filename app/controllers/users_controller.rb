@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_filter :signed_in_user, only: [:index, :destroy]
   before_filter :admin_user,     only: :destroy
   def new
   	@user = User.new
@@ -9,12 +9,18 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
+      @info = { status: 1, info: "create successfull"}.to_json
        respond_to do |format|
           format.html {redirect_to @user}
-          format.json { render json: @user }
+          format.json { render json: @info }
         end
     else
       render 'new'
+      @info = { status: 0, info: "Not create successfull"}.to_json
+       respond_to do |format|
+          format.html {redirect_to @user}
+          format.json { render json: @info }
+        end
     end
   end
 
@@ -23,12 +29,18 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
         flash[:success] = "Profile updated"
         sign_in @user
-        respond_to do |format|
+      @info = { status: 1, info: "update successfull"}.to_json
+       respond_to do |format|
           format.html {redirect_to @user}
-          format.json { render json: @user }
+          format.json { render json: @info }
         end
     else
       render 'edit'
+      @info = { status: 0, info: "not update successfull"}.to_json
+       respond_to do |format|
+          format.html {redirect_to @user}
+          format.json { render json: @info }
+        end
     end
   end
 
@@ -42,6 +54,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user 
+        @info = { status: 1, info: "Not my profile"}.to_json
+        respond_to do |format|
+          format.html { redirect_to home_path, notice: "This is not my profile"}
+          format.json { render json: @info }
+        end
+    end
   end
 
   def index
