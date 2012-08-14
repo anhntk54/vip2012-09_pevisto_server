@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_filter :signed_in_user, only: [ :destroy]
   # GET /products
   # GET /products.json
   def index
