@@ -3,8 +3,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.paginate(page: params[:page])
-
+    @products = Product.where(:user_id => current_user.id).paginate(page: params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -43,7 +42,6 @@ class ProductsController < ApplicationController
   def create
 
     @product = current_user.products.new(params[:product])
-    binding.pry
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

@@ -11,7 +11,7 @@ Project::Application.routes.draw do
   get "users/new"
 
   get "users/delete"
-
+  match 'pro',  to: 'products#index'
   get 'home', to: "home#home"
   get "/", to: "home#home"
   get "home/help"
