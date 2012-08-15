@@ -3,10 +3,15 @@ class UsersController < ApplicationController
   before_filter :admin_user,     only: :destroy
   def new
   	@user = User.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user }
+    end
   end
 
   def create
     @user = User.new(params[:user])
+    binding.pry
     if @user.save
       sign_in @user
       @info = { status: 1, info: "create successfull"}.to_json

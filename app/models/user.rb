@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_accessible :addr, :mail, :phone, :user,  :password, :password_confirmation ,:name, :gender, :birthday
   has_secure_password
   has_many :products, dependent: :destroy
+  has_many :order , dependent: :destroy
   before_save { |user| user.mail = mail.downcase }
   before_save :create_remember_token
   
