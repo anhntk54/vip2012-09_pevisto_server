@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-
+    binding.pry
     @product = current_user.products.new(params[:product])
     respond_to do |format|
       if @product.save

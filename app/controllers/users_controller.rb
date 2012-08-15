@@ -11,21 +11,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    binding.pry
-    if @user.save
-      sign_in @user
-      @info = { status: 1, info: "create successfull"}.to_json
-       respond_to do |format|
-          format.html {redirect_to @user}
-          format.json { render json: @info }
-        end
-    else
-      render 'new'
-      @info = { status: 0, info: "Not create successfull"}.to_json
-       respond_to do |format|
-          format.html {redirect_to @user}
-          format.json { render json: @info }
-        end
+
+    respond_to do |format|
+      if @user.save
+        sign_in @user
+        @info = { status: 1, info: "create successfull"}.to_json
+        format.html { redirect_to @user, notice: 'Event was successfully created.' }
+        format.json { render json: @info, status: :created, location: @event }
+      else
+        @info = { status: 0, info: "not create successfull"}.to_json
+        format.html { render action: "new" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
