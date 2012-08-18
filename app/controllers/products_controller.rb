@@ -36,10 +36,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # POST /products
-  # POST /products.json
   def create
-   # binding.pry
     @product = current_user.products.new(params[:product])
     respond_to do |format|
       if @product.save
