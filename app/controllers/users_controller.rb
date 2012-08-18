@@ -36,10 +36,9 @@ class UsersController < ApplicationController
           format.json { render json: @info }
         end
     else
-      render 'edit'
       @info = { status: 0, info: "not update successfull"}.to_json
        respond_to do |format|
-          format.html {redirect_to @user}
+          format.html {render 'edit'}
           format.json { render json: @info }
         end
     end
