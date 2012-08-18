@@ -13,9 +13,9 @@
 #u.admin = true
 #u.save
 
-puts "Create products"
+#puts "Create products"
 
 Product.destroy_all
 100.times do |i|
-	Product.create(product: "iPhone #{i}",user_id: 24, describe: "worst phone ever")
+	Product.create(product: "iPhone #{i}",user_id: 24, describe: "worst phone ever",image: File.open(File.join(Rails.root, 'chutieu.jpg')))
 end
