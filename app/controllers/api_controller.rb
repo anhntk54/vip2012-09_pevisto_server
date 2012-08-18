@@ -23,7 +23,18 @@ class ApiController < ApplicationController
   end
 
   def createorder
-    binding.pry
+    order = Order.find(params[:id])
+    respond_to do |format|
+      if order.status == true
+        into = {status:0 ,info: "order da thanh toan roi"}
+        format.json{render json: into}
+      else
+        order.status = true
+        order.save
+        into = {status:1 ,info: "thanh toan thanh cong"}
+        format.json{render json: into}
+      end
+    end
   end
 
 end

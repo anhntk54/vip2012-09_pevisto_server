@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120817063231) do
+ActiveRecord::Schema.define(:version => 20120818133619) do
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120817063231) do
     t.boolean  "gender",          :default => false
     t.string   "name"
     t.date     "birthday"
+    t.string   "image"
   end
 
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"

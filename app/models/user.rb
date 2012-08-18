@@ -12,13 +12,13 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :addr, :mail, :phone, :user,  :password, :password_confirmation ,:name, :gender, :birthday,:admin
+  attr_accessible :addr, :mail, :phone, :user,  :password, :password_confirmation ,:name, :gender, :birthday,:admin,:image
   has_secure_password
   has_many :products, dependent: :destroy
   has_many :order , dependent: :destroy
   before_save { |user| user.mail = mail.downcase }
   before_save :create_remember_token
-  
+  mount_uploader :image, ImageUploader
   validates :user,  presence: true, uniqueness: true, length: { maximum: 15 }
   validates :phone,  presence: true, length: { maximum: 11 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
