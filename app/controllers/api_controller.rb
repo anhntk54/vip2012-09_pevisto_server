@@ -4,7 +4,7 @@ class ApiController < ApplicationController
   	@products = Product.where(:user_id => params[:id])
   	respond_to do |format|
   		if @products.count == 0	
-        binding.pry
+      #  binding.pry
   			@into = {status: 0 }.to_json
       		format.html # index.html.erb
       		format.json { render json: @into }
