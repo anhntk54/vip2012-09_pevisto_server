@@ -1,12 +1,17 @@
 Project::Application.routes.draw do
   get "api/allproduct"
   get "api/showcompany"
+  get "api/createorder"
 
   resources :orders
 
   resources :products
 
-  resources :users
+  resources :users do
+    member do 
+      match 'edit', to: 'users#update'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new'

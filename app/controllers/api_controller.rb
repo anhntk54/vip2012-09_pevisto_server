@@ -22,4 +22,8 @@ class ApiController < ApplicationController
     end
   end
 
+  def createorder
+    binding.pry
+  end
+
 end

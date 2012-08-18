@@ -22,9 +22,12 @@
 # 	end
 # end
 
+100.times do |i|
+	Order.create(:product_id => Product.all.sample.id, :user_id => User.all.sample.id ,quantily: 3 )
+end
 #puts "Create products"
 
-Product.destroy_all
-100.times do |i|
-	Product.create(product: "iPhone #{i}",user_id: 24, describe: "worst phone ever",image: File.read(File.join("#{Rails.root}/public", 'chutieu.jpg')))
-end
+# Product.destroy_all
+# 100.times do |i|
+# 	Product.create(product: "iPhone #{i}",user_id: 24, describe: "worst phone ever",image: File.read(File.join("#{Rails.root}/public", 'chutieu.jpg')))
+# end
