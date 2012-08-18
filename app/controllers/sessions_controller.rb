@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
      respond_to do |format|
       if user && user.authenticate(params[:session][:password])
         sign_in user
-        @info = { status: 1, info: "signin successfull"}.to_json
+        @info = { status: 1, info: "signin successfull", user_id: user.id }
         format.html { redirect_to user }
-        format.json { render json: @info, status: :created, location: @event }
+        format.json { render json: @info  }
       else
         @info = { status: 0, info: "not signin successfull"}.to_json
         flash.now[:error] = 'Invalid user/password combination'

@@ -1,5 +1,6 @@
 Project::Application.routes.draw do
   get "api/allproduct"
+  get "api/showcompany"
 
   resources :orders
 
