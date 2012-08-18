@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-
     respond_to do |format|
       if @user.save
         sign_in @user
@@ -47,11 +46,21 @@ class UsersController < ApplicationController
   end
 
   def show
+    binding.pry
      @user = User.find(params[:id])
+
      respond_to do |format|
+      if @user == nil
+
+        flash.now[:error] = 'Not user'
+        @info ={status: 0 ,info:'not user'}.to_json
+        format.html {  }
+        format.json { render json: @info }
+      else
         format.html 
         format.json { render json: @user }
      end
+   end
   end
 
   def edit

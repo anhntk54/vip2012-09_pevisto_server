@@ -1,4 +1,8 @@
 Project::Application.routes.draw do
+  get "api/allproduct"
+
+  resources :orders
+
   resources :products
 
   resources :users
@@ -15,7 +19,7 @@ Project::Application.routes.draw do
   get 'home', to: "home#home"
   get "/", to: "home#home"
   get "home/help"
-
+  match ':controller/:action/:id'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

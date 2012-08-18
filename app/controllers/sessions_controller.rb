@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_user(params[:session][:user])
-    binding.pry
      respond_to do |format|
       if user && user.authenticate(params[:session][:password])
         sign_in user
