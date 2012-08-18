@@ -13,7 +13,7 @@
 #u.admin = true
 #u.save
 
-#puts "Create products"
+puts "Create products"
 
 Product.destroy_all
 100.times do |i|
