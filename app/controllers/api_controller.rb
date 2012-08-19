@@ -37,4 +37,23 @@ class ApiController < ApplicationController
     end
   end
 
+
+  def userorder
+    user = User.find(params[:id])
+    if params[:status] == "false"
+            test = false
+        elsif params[:status] == "true"
+            test = true
+        else
+            test = nil
+        end
+    respond_to do |format|
+      if test == nil
+        format.json{render json: user.order}
+      else
+        format.json{render json: user.order.where(:status => test)}
+      end
+    end
+  end
+
 end

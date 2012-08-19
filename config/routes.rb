@@ -2,7 +2,7 @@ Project::Application.routes.draw do
   get "api/allproduct"
   get "api/showcompany"
   get "api/createorder"
-
+  get "api/userorder"
   resources :orders
 
   resources :products
