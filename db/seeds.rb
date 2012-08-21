@@ -29,5 +29,5 @@ end
 
 # Product.destroy_all
 # 100.times do |i|
-# 	Product.create(product: "iPhone #{i}",user_id: 24, describe: "worst phone ever",image: File.read(File.join("#{Rails.root}/public", 'chutieu.jpg')))
+# 	Product.create(product: "iPhone ",user_id: 24, describe: "worst phone ever",image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
 # end
