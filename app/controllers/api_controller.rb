@@ -56,4 +56,26 @@ class ApiController < ApplicationController
     end
   end
 
+  def statistics_date
+    user = User.find(params[:id])
+    if user.admin?
+       if params[:month] != nil
+        binding.pry
+          user.products.each do |p|
+            if p.created_at.moth == params[:month].to_i
+              binding.pry
+            end
+          end
+        else
+          info = {status: -1 ,info:"Not statistics_date"}  
+        end
+      else
+        info = {status: 0 ,info:"Not user admin"}
+      end
+
+    respond_to do |format|
+      format.json{render json:info}
+  end
+  end
+
 end

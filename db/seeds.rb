@@ -6,28 +6,28 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# puts "Create user admin"
-# User.destroy_all
-# u = User.create(user: 'admin', mail: 'admin@sample.com',
-# 	password: 'password', password_confirmation: 'password', phone: '21341515')
-# u.admin = true
-# u.save
-# 10.times do |i|
-# 	if i > 6
-# 	User.create(user: "admin#{i}", mail: 'admin@sample.com',
-# 	password: 'password', password_confirmation: 'password', phone: '21341515')
-# 	else
-# 		User.create(user: "admin #{i}", mail: 'admin@sample.com',
-# 	password: 'password', password_confirmation: 'password', phone: '21341515',admin: true)
-# 	end
-# end
+puts "Create user admin"
+User.destroy_all
+u = User.create(user: 'admin', mail: 'admin@sample.com',
+	password: 'password', password_confirmation: 'password', phone: '21341515')
+u.admin = true
+u.save
+10.times do |i|
+	if i > 6
+	User.create(user: "admin#{i}", mail: 'admin@sample.com',
+	password: 'password', password_confirmation: 'password', phone: '21341515')
+	else
+		User.create(user: "admin #{i}", mail: 'admin@sample.com',
+	password: 'password', password_confirmation: 'password', phone: '21341515',admin: true)
+	end
+end
+puts "Create products"
 
+Product.destroy_all
 100.times do |i|
+	Product.create(product: "iPhone#{i} ",user_id: User.all.sample.id, describe: "worst phone ever",price: i*20,image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
+end
+Order.destroy_all
+300.times do |i|
 	Order.create(:product_id => Product.all.sample.id, :user_id => User.all.sample.id ,quantily: 3 )
 end
-#puts "Create products"
-
-# Product.destroy_all
-# 100.times do |i|
-# 	Product.create(product: "iPhone ",user_id: 24, describe: "worst phone ever",image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
-# end

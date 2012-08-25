@@ -3,6 +3,7 @@ Project::Application.routes.draw do
   get "api/showcompany"
   get "api/createorder"
   get "api/userorder"
+  get "api/statistics_date"
   resources :orders
 
   resources :products
