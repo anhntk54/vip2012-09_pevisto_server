@@ -60,9 +60,8 @@ class ApiController < ApplicationController
     user = User.find(params[:id])
     if user.admin?
        if params[:month] != nil
-        binding.pry
           user.products.each do |p|
-            if p.created_at.moth == params[:month].to_i
+            if p.created_at.month == params[:month].to_i
               binding.pry
             end
           end

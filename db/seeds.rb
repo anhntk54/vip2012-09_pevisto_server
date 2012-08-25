@@ -25,7 +25,7 @@ puts "Create products"
 
 Product.destroy_all
 100.times do |i|
-	Product.create(product: "iPhone#{i} ",user_id: User.all.sample.id, describe: "worst phone ever",price: i*20,image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
+	Product.create(product: "iPhone#{i} ",user_id: User.all.sample.id, describe: "worst phone ever",price: i*20,image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')),id_type: 1,inventory: 10*i)
 end
 # Order.destroy_all
 # 300.times do |i|
