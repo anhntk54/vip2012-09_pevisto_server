@@ -35,7 +35,6 @@ class ApiController < ApplicationController
         order.save
         into = {status:1 ,info: "thanh toan thanh cong"}
         format.json{render json: into}
-        binding.pry
       end
     end
   end
@@ -49,7 +48,6 @@ class ApiController < ApplicationController
         format.json{render json: info}
       end
     end
-    binding.pry
   end
 
   def userorder
@@ -72,7 +70,6 @@ class ApiController < ApplicationController
               product: o.product.product,image:o.product.image}
       array<<info
     end
-    binding.pry
     respond_to do |format|
       format.json{render json: array}
     end
@@ -98,7 +95,6 @@ class ApiController < ApplicationController
         like = params[:s].concat("%")
         product = User.find(:all, :conditions => ["user like ?", like])
         format.json{render json: product}
-        binding.pry
       end
     end
   end
