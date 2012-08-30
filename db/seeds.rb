@@ -21,11 +21,12 @@
 # 	password: 'password', password_confirmation: 'password', phone: '21341515',admin: true)
 # 	end
 # end
-# puts "Create products"
+	 puts "Create products"
 
-p = Product.all
+p = User.all
 p.each do |p1|
-	p1.product.update_attributes(:image =>File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
+	p1.update_attributes( mail: 'admin@sample.com',
+ 	password: '123456', password_confirmation: '123456', phone: '21341515',admin: true,:image =>File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
 	end
 
 # Product.destroy_all
