@@ -25,8 +25,7 @@
 
 p = Product.all
 p.each do |p1|
-	p1.image =File.open(File.join("#{Rails.root}/public", 'chutieu.jpg'))
-	p1.save
+	p1.product.update_attributes(:image =>File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
 	end
 
 # Product.destroy_all
