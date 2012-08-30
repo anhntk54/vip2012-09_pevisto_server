@@ -41,16 +41,32 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
-
+    old = Order.where("product_id = ? and status=?",params[:order][:product_id],false) 
+    old[0].quantily = params[:order][:quantily].to_i+old[0].quantily
+    t = checkInventory(@order)
+    t2 = checkInventory(old[0])
+    binding.pry
     respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render json: @order, status: :created, location: @order }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+      if t != true && t2 != true
+            format.html { render action: "new", notice: 'so luong trong kho khong du dap ung so luong cua ban' }
+            format.json { render json: {status:-2,info:"so luong trong kho khong du dap ung so luong cua ban"}}
+        else
+          if old.count ==0
+            if @order.save
+                format.html { redirect_to @order, notice: 'Order was successfully created.' }
+                format.json { render json: @order, status: :created, location: @order }
+            else
+                format.html { render action: "new" }
+                format.json { render json: @order.errors, status: :unprocessable_entity }
+            end
+          else
+              old[0].save
+              format.html { redirect_to old[0], notice: 'Order was successfully created.' }
+              format.json { render json: old[0], status: :created, location:old[0] }
+      end
       end
     end
+
   end
 
   # PUT /orders/1

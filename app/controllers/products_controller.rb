@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :signed_in_user, only: [ :destroy]
+  before_filter :signed_in_user, only: [ :destroy,:index,:statistics,:new,:index]
   # GET /products
   # GET /products.json
   def index
@@ -85,6 +85,6 @@ class ProductsController < ApplicationController
     d2 = d1.next_month
     d1 = d1 -1.second
     @toporder =Order.limit(10).order('quantily DESC').where("created_at < ? AND created_at > ? AND user_id =?",d2,d1,current_user.id)
-   # binding.pry
+    @order = Order.where("created_at < ? AND created_at > ? AND user_id =? AND status =?",d2,d1,current_user.id,true)
   end
 end

@@ -21,19 +21,19 @@
 # 	password: 'password', password_confirmation: 'password', phone: '21341515',admin: true)
 # 	end
 # end
-	 puts "Create products"
+# 	 puts "Create products"
 
-p = User.all
-p.each do |p1|
-	p1.update_attributes( mail: 'admin@sample.com',
- 	password: '123456', password_confirmation: '123456', phone: '21341515',admin: true,:image =>File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
-	end
+# p = User.all
+# p.each do |p1|
+# 	p1.update_attributes( mail: 'admin@sample.com',
+#  	password: '123456', password_confirmation: '123456', phone: '21341515',admin: true,:image =>File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')))
+# 	end
 
 # Product.destroy_all
 # 100.times do |i|
 # 	Product.create(product: "iPhone#{i} ",user_id: User.all.sample.id, describe: "worst phone ever",inventory:i*10,price: i*20,image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')),id_type: 1,inventory: 10*i)
 # end
-# Order.destroy_all
+Order.destroy_all
 # 300.times do |i|
 # 	Order.create(:product_id => Product.all.sample.id, :user_id => User.all.sample.id ,quantily: i  )
 # end

@@ -9,5 +9,11 @@ class ApplicationController < ActionController::Base
       		redirect_to(home_path)
       end
     end
-
+  def checkInventory (order)
+  	if order.quantily > order.product.inventory
+  		return false
+  	else
+  		return true
+  	end
+  end
 end
