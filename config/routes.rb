@@ -4,6 +4,11 @@ Project::Application.routes.draw do
   get "api/createorder"
   get "api/userorder"
   get "api/statistics_date"
+  get "products/statistics"
+  match "products/result"
+  get "api/search"
+  get "api/deleteorder"
+  get "api/addquantily"
   resources :orders
 
   resources :products

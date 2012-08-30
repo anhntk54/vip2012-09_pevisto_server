@@ -76,4 +76,15 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def statistics 
+    
+  end
+
+  def result
+    d1 = DateTime.new(params[:product][:year].to_i,params[:product][:month].to_i,1)
+    d2 = d1.next_month
+    d1 = d1 -1.second
+    @toporder =Order.limit(10).order('quantily DESC').where("created_at < ? AND created_at > ? AND user_id =?",d2,d1,current_user.id)
+   # binding.pry
+  end
 end

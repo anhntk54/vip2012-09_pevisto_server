@@ -1,0 +1,6 @@
+
+l=ls $1
+for i in $l
+sudo chmod 777 $1/$i
+end
+

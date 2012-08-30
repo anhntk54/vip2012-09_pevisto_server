@@ -21,13 +21,13 @@
 # 	password: 'password', password_confirmation: 'password', phone: '21341515',admin: true)
 # 	end
 # end
-puts "Create products"
+# puts "Create products"
 
 Product.destroy_all
 100.times do |i|
-	Product.create(product: "iPhone#{i} ",user_id: User.all.sample.id, describe: "worst phone ever",price: i*20,image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')),id_type: 1,inventory: 10*i)
+	Product.create(product: "iPhone#{i} ",user_id: User.all.sample.id, describe: "worst phone ever",inventory:i*10,price: i*20,image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')),id_type: 1,inventory: 10*i)
 end
-# Order.destroy_all
-# 300.times do |i|
-# 	Order.create(:product_id => Product.all.sample.id, :user_id => User.all.sample.id ,quantily: 3 )
-# end
+Order.destroy_all
+300.times do |i|
+	Order.create(:product_id => Product.all.sample.id, :user_id => User.all.sample.id ,quantily: i  )
+end

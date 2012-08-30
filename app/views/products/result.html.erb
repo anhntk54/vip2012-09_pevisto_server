@@ -1,0 +1,17 @@
+
+<table class="pretty">
+  <tr>
+    <th>Stt</th>
+    <th>Products</th>
+    <th>Quantily</th>
+  </tr>
+  <% i=1%>
+  <% for order in @toporder %>
+    <tr>
+      <td><%= i %></td>
+      <% i=i+1%>
+      <td><%= order.product.describe%></td>
+      <td><%= order.quantily %></td>
+    </tr>
+  <% end %>
+</table>
