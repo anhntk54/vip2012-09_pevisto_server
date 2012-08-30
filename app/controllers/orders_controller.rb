@@ -41,11 +41,14 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
-    old = Order.where("product_id = ? and status=?",params[:order][:product_id],false) 
-    old[0].quantily = params[:order][:quantily].to_i+old[0].quantily
-    t = checkInventory(@order)
-    t2 = checkInventory(old[0])
     binding.pry
+    old = Order.where("product_id = ? and status=?",params[:order][:product_id],false) 
+    t2 = false
+    if old.count !=0
+        old[0].quantily = params[:order][:quantily].to_i+old[0].quantily
+        t2 = checkInventory(old[0])
+    end
+    t = checkInventory(@order)
     respond_to do |format|
       if t != true && t2 != true
             format.html { render action: "new", notice: 'so luong trong kho khong du dap ung so luong cua ban' }
