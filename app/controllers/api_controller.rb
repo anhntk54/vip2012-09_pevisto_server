@@ -67,7 +67,7 @@ class ApiController < ApplicationController
     array  = Array.new
     allorder.each do |o|
       info = {id: o.id,user_id: o.user_id, product_id:o.product_id,quantily:o.quantily,
-              product: o.product.name,image:o.product.image}
+              name: o.product.name,image:o.product.image}
       array<<info
     end
     respond_to do |format|
@@ -89,7 +89,7 @@ class ApiController < ApplicationController
     respond_to do |format|
       if params[:id].to_i == 1
         like = params[:s].concat("%")
-        product = Product.find(:all, :conditions => ["product like ?", like])
+        product = Product.find(:all, :conditions => ["name like ?", like])
         format.json{render json: product}
       else
         like = params[:s].concat("%")
