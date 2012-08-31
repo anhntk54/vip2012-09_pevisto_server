@@ -41,7 +41,6 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(params[:order])
-    binding.pry
     old = Order.where("product_id = ? and status=?",params[:order][:product_id],false) 
     t2 = false
     if old.count !=0
