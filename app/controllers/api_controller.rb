@@ -89,7 +89,7 @@ class ApiController < ApplicationController
     respond_to do |format|
       if params[:id].to_i == 1
         like ='%'+ params[:s].concat("%")
-        product = Product.where("name ILKE ? ",like)
+        product = Product.where("name ILIKE ? ",like)
         format.json{render json: product}
       else
         like = params[:s].concat("%")
