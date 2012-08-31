@@ -88,8 +88,8 @@ class ApiController < ApplicationController
     def search
     respond_to do |format|
       if params[:id].to_i == 1
-        like = params[:s].concat("%")
-        product = Product.find(:all, :conditions => ["name like ?", like])
+        like ='%'+ params[:s].concat("%")
+        product = Product.where("name ILKE ? ",like)
         format.json{render json: product}
       else
         like = params[:s].concat("%")
@@ -98,4 +98,22 @@ class ApiController < ApplicationController
       end
     end
   end
+
+  def allorder
+    user = User.find(params[:id])
+    if user.order.count == 0
+      info ={status:0,info:'ban chua mua san pham'}
+      else
+        sum =0 
+        user.order.each do |o|
+          sum = sum + o.quantily*o.product.price
+        end
+        info = {sum: sum}
+    end
+    respond_to do |format|
+      format.json{json:info}
+    end
+  end
+
+
 end

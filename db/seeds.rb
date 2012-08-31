@@ -34,6 +34,6 @@
 # 	Product.create(product: "iPhone#{i} ",user_id: User.all.sample.id, describe: "worst phone ever",inventory:i*10,price: i*20,image: File.open(File.join("#{Rails.root}/public", 'chutieu.jpg')),id_type: 1,inventory: 10*i)
 # end
 Order.destroy_all
-# 300.times do |i|
-# 	Order.create(:product_id => Product.all.sample.id, :user_id => User.all.sample.id ,quantily: i  )
-# end
+300.times do |i|
+	Order.create(:product_id => Product.all.sample.id, :user_id => User.all.sample.id ,quantily: i  )
+end
