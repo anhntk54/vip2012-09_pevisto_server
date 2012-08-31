@@ -2,7 +2,7 @@
 
 <p>
    <%= image_tag @product.image_url(:thumb) if @product.image? %>
-      <div class="name"><%= @product.product %></div>
+      <div class="name"><%= @product.name %></div>
 </p>
 
 <p>
@@ -12,7 +12,7 @@
 
 <p>
   <b>Product:</b>
-  <%= @product.product %>
+  <%= @product.name %>
 </p>
 
 <p>

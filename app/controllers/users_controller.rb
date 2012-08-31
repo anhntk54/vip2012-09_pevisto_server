@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
+      binding.pry
         flash[:success] = "Profile updated"
         sign_in @user
       @info = { status: 1, info: "update successfull"}.to_json

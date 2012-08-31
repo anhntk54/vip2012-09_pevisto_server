@@ -67,7 +67,7 @@ class ApiController < ApplicationController
     array  = Array.new
     allorder.each do |o|
       info = {id: o.id,user_id: o.user_id, product_id:o.product_id,quantily:o.quantily,
-              product: o.product.product,image:o.product.image}
+              product: o.product.name,image:o.product.image}
       array<<info
     end
     respond_to do |format|
