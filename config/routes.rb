@@ -10,6 +10,7 @@ Project::Application.routes.draw do
   get "api/deleteorder"
   get "api/addquantily"
   get "api/allorder"
+  get "api/oneorder"
   resources :orders
 
   resources :products

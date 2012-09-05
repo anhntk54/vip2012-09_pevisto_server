@@ -67,7 +67,7 @@ class ApiController < ApplicationController
     array  = Array.new
     allorder.each do |o|
       info = {id: o.id,user_id: o.user_id, product_id:o.product_id,quantily:o.quantily,
-              name: o.product.name,image:o.product.image}
+              name: o.product.name,image:o.product.image,price:o.product.price}
       array<<info
     end
     respond_to do |format|
@@ -91,16 +91,13 @@ class ApiController < ApplicationController
         like ='%'+ params[:s].concat("%")
         product = Product.where("name ILIKE ? ",like)
         format.json{render json: product}
-      else
-        like = params[:s].concat("%")
-        product = User.find(:all, :conditions => ["user like ?", like])
-        format.json{render json: product}
       end
     end
   end
 
   def allorder
     user = User.find(params[:id])
+
     if user.order.count == 0
       info ={status:0,info:'ban chua mua san pham'}
       else
@@ -111,9 +108,11 @@ class ApiController < ApplicationController
         info = {sum: sum}
     end
     respond_to do |format|
-      format.json{json:info}
+      format.json{render json: info}
     end
   end
 
+    def oneorder
+    end
 
 end
